@@ -27,6 +27,47 @@ Features:
 
 3. **Data Transformation**: Transforms raw scraped data into structured pandas DataFrames, making the data ready for analysis, visualization, or storage.
 
+"""# Important libraries and function of each variables:
+
+1. **Import necessary libraries**: The required Python libraries are imported at the beginning of the script. These are:
+
+   - `tqdm`: Used to show a progress bar when looping over a large number of items.
+   - `requests`: Used to make HTTP requests to the website.
+   - `BeautifulSoup`: Used to parse HTML content.
+   - `re`: The standard Python module for regular expressions, used to perform string manipulations.
+   - `datetime`: Used to handle date and time related tasks.
+   - `pandas`: A powerful data manipulation library.
+
+2. **Define functions**:
+
+   - `create_session(url, payload)`: This function creates a new session, posts the payload to the URL, and returns the session.
+   - `get_page(session, url)`: This function sends a GET request to the specified URL using the session created earlier, and parses the HTML response using BeautifulSoup.
+   - `parse_post(post_link, year)`: This function takes a link to a post and the current year as inputs, extracts post data, and also calls `parse_comments` function to extract comments data from the post.
+   - `scrape_pages(start_url, num_pages)`: This function scrapes a specified number of pages from the starting URL. It uses `get_page` to fetch the page content and `parse_post` to extract the post and comments data.
+   - `parse_comments(main_content, post_id, year)`: This function extracts comments data from a post's content.
+
+3. **URL and payload**: The URL for the search query and the payload for the post request are defined.
+
+4. **Create session**: A session is created using the `create_session` function and the URL and payload defined earlier. This session is used for all subsequent requests to maintain the same HTTP context.
+
+5. **Get the current year**: The current year is fetched using the `datetime` library. This is used later when parsing the dates of the comments.
+
+6. **Scrape pages**: The `scrape_pages` function is called with the search URL and the number of pages to scrape. It returns two lists containing the posts data and the comments data respectively.
+
+7. **Create DataFrames**: The lists of posts and comments data are converted into pandas DataFrames for easier manipulation and analysis.
+
+8. **Print DataFrames**: Finally, the DataFrames are printed to the console.
+
+Some important variables in the code are:
+
+- `session`: This is an instance of a `requests.Session` that is used to send requests to the website. A session is used instead of individual requests to keep the context (like cookies) across multiple requests.
+- `year`: The current year, used when parsing the dates of the comments.
+- `posts_data` and `comments_data`: These lists store the data of posts and comments scraped from the website.
+- `posts_df` and `comments_df`: These are pandas DataFrames that store the posts and comments data in a tabular format.
+
+# Saving the result
+"""
+
 4. **Scalability**: Can be extended to scrape other boards on PTT or adapted to other websites as well.
 """
 
