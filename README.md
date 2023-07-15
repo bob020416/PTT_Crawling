@@ -67,7 +67,3 @@ Some important variables in the code are:
 
 # Saving the result
 """
-
-4. **Scalability**: Can be extended to scrape other boards on PTT or adapted to other websites as well.
-"""
-
